@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E镜量体"智"衣 - 智能虚拟试衣新时代</title>
+    <style>
+        :root {
+            --primary-color: #e6f2ff;
+            --secondary-color: #cce5ff;
+            --accent-color: #0077cc;
+            --text-color: #333;
+            --light-text: #666;
+            --white: #fff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            height: 50px;
+            margin-right: 15px;
+        }
+        
+        .logo h1 {
+            font-size: 24px;
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .hero {
+            background: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 119, 204, 0.5);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: var(--white);
+            max-width: 600px;
+        }
+        
+        .hero-content h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--white);
+            color: var(--accent-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--white);
+            color: var(--accent-color);
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 40px;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+        
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        
+        .platforms {
+            background-color: var(--secondary-color);
+        }
+        
+        .platform-cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+        
+        .platform-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .platform-card img {
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        
+        .platform-card h3 {
+            margin-bottom: 15px;
+        }
+        
+        .coupon {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        
+        .user-experience {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .experience-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .experience-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .experience-content {
+            padding: 20px;
+        }
+        
+        .experience-content h3 {
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 18px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            opacity: 1;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 10px;
+            }
+            
+            .hero-content {
+                text-align: center;
+                padding: 0 20px;
+            }
+            
+            .hero-content h2 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+<img src="image/微信图片_20250518125337.jpg" width="80" height="80" alt=""/>
+<h1>E镜量体"智"衣</h1>
+              </div>
+              <nav>
+                    <ul>
+                        <li><a href="index.html">首页</a></li>
+                        <li><a href="features.html">核心功能</a></li>
+                        <li><a href="platforms.html">合作平台</a></li>
+                        <li><a href="experience.html">用户体验</a></li>
+                        <li><a href="about.html">关于我们</a></li>
+                    </ul>
+              </nav>
+            </div>
+        </div>
+    </header>
+	
+	  <section id="features">
+        <div class="container">
+          <div class="section-title">
+            <h2>核心功能</h2>
+            <p>E镜量体"智"衣为您提供全方位的智能试衣解决方案</p>
+            <img src="image/微信图片_20250518125741.jpg" width="1100" height="600" alt=""/>            </div>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="feature-icon">👕</div>
+                    <h3>3D人体建模与虚拟试衣</h3>
+                    <p>利用多模态3D扫描技术(如RGB-D摄像头、结构光、激光雷达)和AI布料自适应算法，实现高精度的3D人体建模与虚拟试衣，让用户能够实时看到服装的上身效果。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛒</div>
+                    <h3>电商平台无缝对接</h3>
+                    <p>通过API接口与淘宝、京东、拼多多等主流电商平台无缝对接，实现商品数据、用户信息、交易流程的标准化传输，用户可在试衣镜上直接浏览电商平台的服饰并完成购买。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>智能推荐系统</h3>
+                    <p>基于用户的行为数据和AI算法，为用户提供个性化的服装推荐和搭配建议，帮助用户快速找到适合自己的服装。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💳</div>
+                    <h3>一键加购与安全支付</h3>
+                    <p>支持用户在试衣过程中一键将商品加入购物车，并通过生物识别技术(如人脸识别、指纹验证)进行安全支付，简化购物流程。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>数据沉淀与分析</h3>
+                    <p>收集用户的试穿、购买等行为数据，为商家提供精准营销支持，同时为用户提供个性化的试衣报告和健康建议。</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👶</div>
+                    <h3>儿童成长记录</h3>
+                    <p>自动追踪儿童的体型变化，生成成长曲线，并根据预测尺码为家长推荐合适的儿童服装，同时增加趣味化交互，如试穿动画特效。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	<footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>产品</h3>
+                    <ul>
+                        <li><a href="#">智能试衣镜</a></li>
+                        <li><a href="#">移动应用</a></li>
+                        <li><a href="#">小程序</a></li>
+                        <li><a href="#">API接口</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>服务</h3>
+                    <ul>
+                        <li><a href="#">技术支持</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">使用教程</a></li>
+                        <li><a href="#">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>关于</h3>
+                    <ul>
+                        <li><a href="#">公司简介</a></li>
+                        <li><a href="#">团队介绍</a></li>
+                        <li><a href="#">加入我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系方式</h3>
+                    <ul>
+                        <li>电话: 18945523606</li>
+                        <li>邮箱: 2574678908@qq.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; E镜量体"智"衣 版权所有</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
